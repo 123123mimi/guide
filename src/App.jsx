@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import Sidebar from './components/Sidebar'
 import Header from './components/Header'
-import Nav from './components/Nav'
 import Overview from './components/Overview'
 import Phase from './components/Phase'
 import RefTable from './components/RefTable'
@@ -13,8 +13,8 @@ export default function App() {
 
   return (
     <div className="font-['Noto_Sans_KR','Malgun_Gothic',sans-serif] bg-[#f8f9fc] text-gray-700 leading-7 min-h-screen">
+      <Sidebar />
       <Header />
-      <Nav />
 
       <div className="max-w-[960px] mx-auto px-6 py-10">
         <Overview />
