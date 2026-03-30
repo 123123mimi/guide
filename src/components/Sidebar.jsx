@@ -51,7 +51,7 @@ export default function Sidebar() {
   const toggle = (idx) => setExpanded((p) => ({ ...p, [idx]: !p[idx] }))
 
   const menu = (
-    <div className="w-52 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/80 overflow-hidden">
+    <div className="w-52 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/80 overflow-hidden leading-[1.4]">
       <div className="px-4 pt-4 pb-2 text-[11px] font-bold text-gray-400 tracking-wider uppercase">
         가이드 목록
       </div>
