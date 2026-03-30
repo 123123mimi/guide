@@ -46,6 +46,7 @@
   .lightbox-hint { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 13px; }
   .footer { text-align: center; padding: 48px 24px; font-size: 12px; color: #aaa; border-top: 1px solid #e8ecf1; }
 </style>
+<link rel="stylesheet" href="../sidebar-widget.css">
 </head>
 <body>
 
@@ -461,5 +462,12 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
+
+<script
+  src="../sidebar-widget.js"
+  data-active="learner"
+  data-sections='[{"href":"#pc","label":"PC 이용가이드"},{"href":"#mobile","label":"모바일 이용가이드"},{"href":"#safety","label":"산업안전교육 가이드"}]'>
+</script>
+
 </body>
 </html>
