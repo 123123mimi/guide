@@ -121,14 +121,14 @@ export default function Sidebar() {
   return (
     <>
       {/* 데스크톱: 플로팅 TOC */}
-      <div className="hidden xl:block fixed top-[148px] left-4 z-50">
+      <div className="hidden min-[1440px]:block fixed top-[148px] z-50" style={{ left: 'calc(50% - 708px)' }}>
         {menu}
       </div>
 
       {/* 모바일/태블릿: 플로팅 버튼 */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="xl:hidden fixed top-3 left-3 z-[200] bg-white border border-gray-200 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
+        className="min-[1440px]:hidden fixed top-3 left-3 z-[200] bg-white border border-gray-200 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
       >
         <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           {mobileOpen ? (
@@ -141,12 +141,12 @@ export default function Sidebar() {
 
       {/* 모바일 오버레이 */}
       {mobileOpen && (
-        <div className="xl:hidden fixed inset-0 bg-black/20 z-[150]" onClick={() => setMobileOpen(false)} />
+        <div className="min-[1440px]:hidden fixed inset-0 bg-black/20 z-[150]" onClick={() => setMobileOpen(false)} />
       )}
 
       {/* 모바일 플로팅 메뉴 */}
       {mobileOpen && (
-        <div className="xl:hidden fixed top-16 left-3 z-[160]">
+        <div className="min-[1440px]:hidden fixed top-16 left-3 z-[160]">
           {menu}
         </div>
       )}
