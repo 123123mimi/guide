@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포켓클래스 교육담당자 가이드</title>
+<meta property="og:title" content="포켓클래스 교육담당자 가이드">
+<meta property="og:description" content="교육담당자를 위한 학습현황 확인, 수료증 발급, 결과보고서 출력 가이드">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://123123mimi.github.io/guide/manager/">
+<meta property="og:locale" content="ko_KR">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif; background: #f8f9fc; color: #333; line-height: 1.7; }
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 48px 0; text-align: center; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .header p { font-size: 15px; opacity: 0.7; }
+  .header .badge { display: inline-block; margin-top: 16px; background: rgba(255,255,255,0.15); padding: 6px 20px; border-radius: 20px; font-size: 13px; }
+  .nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e8ecf1; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+  .nav a { padding: 14px 20px; font-size: 14px; font-weight: 500; text-decoration: none; color: #666; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav a:hover, .nav a.active { color: #3b5bdb; border-bottom-color: #3b5bdb; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  .overview { background: #fff; border-radius: 0; padding: 28px 24px; margin-bottom: 40px; border-bottom: 1px solid #ddd; }
+  .overview h2 { font-size: 18px; margin-bottom: 14px; color: #222; }
+  .phase { margin-bottom: 48px; }
+  .phase-title { display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
+  .phase-num { color: #3b5bdb; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+  .phase-title h2 { font-size: 20px; font-weight: 700; color: #222; }
+  .step { background: #fff; border-radius: 4px; margin-bottom: 20px; border: none; overflow: hidden; padding-bottom: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .step-header { padding: 18px 24px 10px 24px; display: flex; align-items: flex-start; gap: 10px; }
+  .step-num { color: #3b5bdb; font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 1px; min-width: 18px; }
+  .step-content { flex: 1; }
+  .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: #222; }
+  .step-content p { font-size: 13.5px; color: #555; }
+  .callout { margin: 0 24px 20px 24px; padding: 13px 16px; font-size: 13px; line-height: 1.8; background: #f9f9fb; border: none; border-radius: 0; color: #444; }
+  .callout b { font-weight: 600; color: #222; }
+  .callout.info { background: #f4f6fa; }
+  .callout.warn { background: #faf6ef; }
+  .step-image { padding: 0 24px 24px 24px; }
+  .step-image img { width: 100%; border-radius: 8px; border: 1px solid #e0e0e0; cursor: pointer; transition: box-shadow 0.2s; }
+  .step-image img:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+  .lightbox.show { display: flex; }
+  .lightbox img { max-width: 95%; max-height: 92%; border-radius: 8px; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+  .lightbox-hint { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 13px; }
+  .footer { text-align: center; padding: 48px 24px; font-size: 12px; color: #aaa; border-top: 1px solid #e8ecf1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>포켓클래스 교육담당자 가이드</h1>
+  <p>학습현황 확인 · 수료증 발급 · 결과보고서 출력</p>
+  <div class="badge">최종 업데이트: 2026.03</div>
+</div>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#login" class="active">로그인</a>
+    <a href="#status">학습현황 관리</a>
+    <a href="#cert">수료증 발급</a>
+    <a href="#report">결과보고서</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 로그인 -->
+  <div class="phase" id="login">
+    <div class="phase-title">
+      <div class="phase-num">01.</div>
+      <h2>관리자 페이지 로그인</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>관리자 페이지(LMS) 접속</h3>
+          <p><b>pocketclass.co.kr/companyMng/login</b>으로 접속합니다.<br>
+          교육담당자 확인 후 로그인합니다.</p>
+        </div>
+      </div>
+      <div class="callout info">
+        <b>로그인 예시</b><br>
+        아이디: 사업자등록번호 (예: 1112345678)<br>
+        비밀번호: 사업자등록번호 + ! (예: 1112345678!)
+      </div>
+      <div class="step-image"><img src="02.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- 학습현황 관리 -->
+  <div class="phase" id="status">
+    <div class="phase-title">
+      <div class="phase-num">02.</div>
+      <h2>학습현황 관리</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>학습자 현황 확인</h3>
+          <p><b>학습현황관리 > 학습자관리</b>를 클릭합니다.<br>
+          회사명 선택 → 과정명 선택 → 돋보기 클릭(이름+아이디 공란으로 클릭 시 모든 인원 확인)<br>
+          학습 진도율, 평가·과제 진행 및 총점 등 학습자 진행 현황을 확인합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="03.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- 수료증 발급 -->
+  <div class="phase" id="cert">
+    <div class="phase-title">
+      <div class="phase-num">03.</div>
+      <h2>수료증 발급</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>수료증 출력 대상 선택</h3>
+          <p><b>학습현황관리 > 수료관리</b>를 클릭합니다.<br>
+          회사명 선택 → 과정명 선택 → 돋보기 클릭 → 출력 인원 체크 → <b>수료증 출력</b></p>
+        </div>
+      </div>
+      <div class="step-image"><img src="04.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>수료증 내려받기</h3>
+          <p><b>수료증 유형</b>: 과정명 또는 차시명으로 출력<br>
+          <b>수료증 형태</b>:<br>
+          · 개별: 압축 파일 안에 수강생 개별 수료증 포함<br>
+          · 리스트: 1개의 PDF 파일 안에 개별 수료증 포함<br>
+          · 통합: 전체 인원 통합 1장 출력<br>
+          <b>옵션</b>: 차시 미포함(기본) / 차시 포함 선택 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="05.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- 결과보고서 -->
+  <div class="phase" id="report">
+    <div class="phase-title">
+      <div class="phase-num">04.</div>
+      <h2>결과보고서 출력</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>결과보고서 확인</h3>
+          <p><b>학습현황관리 > 수료관리</b>를 클릭합니다.<br>
+          회사명 선택 → 과정명 선택 → 돋보기 클릭 (교육기간 종료 및 이수처리 후 과정별 다운로드)<br>
+          <b>결과보고서 출력</b>을 클릭합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="06.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>결과보고서 저장</h3>
+          <p>결과보고서 출력 클릭 시 보고서 팝업이 확인됩니다.<br>
+          <b>PDF 저장</b>을 클릭하여 다운로드합니다.</p>
+        </div>
+      </div>
+      <div class="callout info">
+        <b>교육결과보고서 구성</b><br>
+        · 교육이수 결과보고서<br>
+        · 교육이수 현황<br>
+        · 차시별 학습내용
+      </div>
+      <div class="step-image"><img src="07.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  포켓클래스 교육담당자 가이드 | 문의: hrd@pocketclass.co.kr | 070-5220-2334
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" />
+  <div class="lightbox-hint">클릭하여 닫기 | ESC</div>
+</div>
+
+<script>
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  document.querySelectorAll('.phase').forEach(section => {
+    const top = section.offsetTop - 120;
+    if (pageYOffset >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포켓클래스 학습자 이용 가이드</title>
+<meta property="og:title" content="포켓클래스 학습자 이용 가이드">
+<meta property="og:description" content="PC·모바일 학습 방법 및 산업안전교육 수강 가이드">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://123123mimi.github.io/guide/learner/">
+<meta property="og:locale" content="ko_KR">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif; background: #f8f9fc; color: #333; line-height: 1.7; }
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 48px 0; text-align: center; }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .header p { font-size: 15px; opacity: 0.7; }
+  .header .badge { display: inline-block; margin-top: 16px; background: rgba(255,255,255,0.15); padding: 6px 20px; border-radius: 20px; font-size: 13px; }
+  .nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e8ecf1; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+  .nav a { padding: 14px 18px; font-size: 13px; font-weight: 500; text-decoration: none; color: #666; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav a:hover, .nav a.active { color: #3b5bdb; border-bottom-color: #3b5bdb; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  .phase { margin-bottom: 48px; }
+  .phase-title { display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
+  .phase-num { color: #3b5bdb; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+  .phase-title h2 { font-size: 20px; font-weight: 700; color: #222; }
+  .step { background: #fff; border-radius: 4px; margin-bottom: 20px; border: none; overflow: hidden; padding-bottom: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .step-header { padding: 18px 24px 10px 24px; display: flex; align-items: flex-start; gap: 10px; }
+  .step-num { color: #3b5bdb; font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 1px; min-width: 18px; }
+  .step-content { flex: 1; }
+  .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: #222; }
+  .step-content p { font-size: 13.5px; color: #555; }
+  .callout { margin: 0 24px 20px 24px; padding: 13px 16px; font-size: 13px; line-height: 1.8; background: #f9f9fb; border: none; border-radius: 0; color: #444; }
+  .callout b { font-weight: 600; color: #222; }
+  .callout.info { background: #f4f6fa; }
+  .callout.warn { background: #faf6ef; }
+  .callout.danger { background: #faf0f0; }
+  .step-image { padding: 0 24px 24px 24px; }
+  .step-image img { width: 100%; border-radius: 8px; border: 1px solid #e0e0e0; cursor: pointer; transition: box-shadow 0.2s; }
+  .step-image img:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+  .lightbox.show { display: flex; }
+  .lightbox img { max-width: 95%; max-height: 92%; border-radius: 8px; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+  .lightbox-hint { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 13px; }
+  .footer { text-align: center; padding: 48px 24px; font-size: 12px; color: #aaa; border-top: 1px solid #e8ecf1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>포켓클래스 학습자 이용 가이드</h1>
+  <p>PC·모바일 학습 방법 및 산업안전교육 수강 안내</p>
+  <div class="badge">최종 업데이트: 2026.03</div>
+</div>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#pc" class="active">PC 이용가이드</a>
+    <a href="#mobile">모바일 이용가이드</a>
+    <a href="#safety">산업안전교육 가이드</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ===== PC 이용가이드 ===== -->
+  <div class="phase" id="pc">
+    <div class="phase-title">
+      <div class="phase-num">PART 1.</div>
+      <h2>PC 이용가이드</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>홈페이지 검색</h3>
+          <p>검색창 또는 주소창에 <b>포켓클래스</b>를 검색하세요. (pocketclass.co.kr)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="02.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>가입 없는 로그인</h3>
+          <p>핸드폰 번호를 입력하여 로그인하세요. (가입 불필요)<br>
+          회사에서 요청한 과정이 개강되며 개강 문자(카카오톡) 안내를 참고하세요.</p>
+        </div>
+      </div>
+      <div class="callout info">
+        <b>로그인 예시</b><br>
+        아이디: 01012341234<br>
+        비밀번호: 01012341234!
+      </div>
+      <div class="step-image"><img src="03.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>나의 강의실 이동</h3>
+          <p>나의 강의실에서 수강 중인 내역을 확인하세요.<br>
+          홈페이지 우측 상단 <b>나의 강의실</b>을 클릭합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="04.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>수강 중인 과정 확인</h3>
+          <p>수강 중인 과정을 확인하고 강의실에 입장하여 기간 내 수강하세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="05.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>학습 진행</h3>
+          <p>순차적으로 차시를 눌러 강의를 시청하세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="06.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">06.</div>
+        <div class="step-content">
+          <h3>화면 구성 (나의 강의실)</h3>
+          <p>수강 중인 과정, 복습 중인 과정, 남은 학습일, 수료증 출력 등을 확인할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="07.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">07.</div>
+        <div class="step-content">
+          <h3>화면 구성 (과정 상세)</h3>
+          <p>학습하기, 수강기간, 진도율, 교안보기, 과제/평가 등을 확인할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="08.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">08.</div>
+        <div class="step-content">
+          <h3>화면 구성 (학습 화면)</h3>
+          <p>과정명, 차시 선택, 학습 화면, 학습자료, Q&A 등을 확인할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="09.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 모바일 이용가이드 ===== -->
+  <div class="phase" id="mobile">
+    <div class="phase-title">
+      <div class="phase-num">PART 2.</div>
+      <h2>모바일 이용가이드</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>홈페이지 접속</h3>
+          <p>개강 메시지에 적힌 사이트를 클릭하세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="11.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>가입 없는 로그인</h3>
+          <p>핸드폰 번호를 입력하여 로그인하세요. (가입 불필요)</p>
+        </div>
+      </div>
+      <div class="callout info">
+        <b>로그인 예시</b><br>
+        아이디: 01012341234<br>
+        비밀번호: 01012341234<b>!</b> (느낌표 입력)
+      </div>
+      <div class="step-image"><img src="12.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>나의 강의실 이동</h3>
+          <p>왼쪽 상단 또는 오른쪽 상단의 버튼을 눌러 나의 강의실 메뉴로 이동합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="13.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>강의실 입장</h3>
+          <p>수강 중인 과정을 확인하고 강의실에 입장하세요.<br>
+          수강 중인 과정이 여러 개일 경우 화면을 아래로 내리면 확인 가능합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="14.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>학습 진행</h3>
+          <p>차시를 클릭하면 강의가 시작됩니다. 1차시부터 순차적으로 수강하세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="16.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">06.</div>
+        <div class="step-content">
+          <h3>화면 구성 (나의 강의실)</h3>
+          <p>수강 중인 과정, 복습 중인 과정, 남은 학습일, 진도율, 수료증 등을 확인합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="17.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">07.</div>
+        <div class="step-content">
+          <h3>화면 구성 (과정 상세)</h3>
+          <p>학습하기, 남은 학습일, 진도율, 과정 상세, 학습 이력, 교안보기 등을 확인합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="18.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">08.</div>
+        <div class="step-content">
+          <h3>화면 구성 (학습 화면)</h3>
+          <p>과정명, 차시 선택, 학습 화면, 학습자료, Q&A 등을 확인합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="19.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 산업안전교육 가이드 ===== -->
+  <div class="phase" id="safety">
+    <div class="phase-title">
+      <div class="phase-num">PART 3.</div>
+      <h2>산업안전교육 가이드</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>홈페이지 검색</h3>
+          <p>검색창 또는 주소창에 <b>포켓클래스</b>를 검색하세요. (pocketclass.co.kr)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="21.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>가입 없는 로그인</h3>
+          <p>가입 없이 문자에 안내된 계정으로 로그인하세요. PC/모바일 모두 이용 가능합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="22.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>나의 강의실 이동</h3>
+          <p>나의 강의실에서 수강 중인 내역을 확인하세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="23.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>수강 중인 과정 확인 및 학습하기</h3>
+          <p>수강기간 내 접속일이 포함되어 있는 경우, 수강 중인 과정에서 강의실에 입장합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="24.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>본인인증 (카카오톡 인증)</h3>
+          <p>안전보건교육은 공단에서 진행하는 <b>본인인증이 필수</b>입니다.<br>
+          카카오톡, 휴대폰 인증, 아이핀 중 1가지 방법으로 인증합니다.</p>
+        </div>
+      </div>
+      <div class="callout danger">
+        <b>필수</b>: 본인이 직접 수강하는 과정으로, 반드시 본인인증을 진행해야 합니다.
+      </div>
+      <div class="step-image"><img src="26.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">06.</div>
+        <div class="step-content">
+          <h3>본인인증 (휴대폰 인증)</h3>
+          <p>본인 명의 휴대폰 이용 시 문자 인증을 진행합니다.<br>
+          통신사 선택 → 이름/생년월일/번호 입력 → 인증번호 입력</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="27.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">07.</div>
+        <div class="step-content">
+          <h3>본인인증 (아이핀)</h3>
+          <p>본인 명의 휴대폰 미사용 시 아이핀 ID와 비밀번호를 입력하여 인증합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="28.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">08.</div>
+        <div class="step-content">
+          <h3>학습 진행</h3>
+          <p>1차시부터 순차적으로 학습을 진행하세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="29.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">09.</div>
+        <div class="step-content">
+          <h3>최종평가</h3>
+          <p>진도율 <b>90% 이상</b> 수강 후 최종평가에 응시합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="30.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">10.</div>
+        <div class="step-content">
+          <h3>교안 다운로드</h3>
+          <p>시험이 있는 과정은 교안을 다운로드하여 확인할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="31.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">11.</div>
+        <div class="step-content">
+          <h3>수료증 출력</h3>
+          <p>수료 조건이 충족되면 <b>수료증 출력</b> 버튼이 생성됩니다. 우측 상단에서 다운로드합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="32.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">12.</div>
+        <div class="step-content">
+          <h3>복습 중인 과정</h3>
+          <p>기간이 종료된 과정은 복습 중인 과정에서 수강 가능합니다. 수료 시 수료증 출력도 가능합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="33.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">13.</div>
+        <div class="step-content">
+          <h3>수강 종료 과정</h3>
+          <p>수강 및 복습 기간이 종료된 과정에서도 수료증 출력이 가능합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="35.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  포켓클래스 학습자 이용 가이드 | 문의: hrd@pocketclass.co.kr | 070-5220-2334
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" />
+  <div class="lightbox-hint">클릭하여 닫기 | ESC</div>
+</div>
+
+<script>
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  document.querySelectorAll('.phase').forEach(section => {
+    const top = section.offsetTop - 120;
+    if (pageYOffset >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
