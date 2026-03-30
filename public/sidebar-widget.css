@@ -91,7 +91,7 @@
 .sidebar-desktop {
   display: none;
   position: fixed;
-  top: 148px;
+  top: 240px;
   left: calc(50% - 708px);
   z-index: 50;
 }

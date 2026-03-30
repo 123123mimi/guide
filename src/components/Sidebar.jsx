@@ -121,7 +121,7 @@ export default function Sidebar() {
   return (
     <>
       {/* 데스크톱: 플로팅 TOC */}
-      <div className="hidden min-[1440px]:block fixed top-[148px] z-50" style={{ left: 'calc(50% - 708px)' }}>
+      <div className="hidden min-[1440px]:block fixed top-[240px] z-50" style={{ left: 'calc(50% - 708px)' }}>
         {menu}
       </div>
 
