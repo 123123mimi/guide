@@ -1,0 +1,92 @@
+/* ===== Header Hero Effects (static pages) ===== */
+
+.header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f1023 0%, #1a1a2e 40%, #16213e 100%);
+  padding: 64px 0;
+}
+
+/* 배경 글로우 */
+.header::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(59,91,219,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  animation: header-glow-pulse 4s ease-in-out infinite;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 400px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(99,140,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: header-glow-pulse 5s ease-in-out 1s infinite;
+}
+
+@keyframes header-glow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* 제목 시머 효과 */
+.header h1 {
+  position: relative;
+  z-index: 1;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #a8c0ff 25%,
+    #ffffff 50%,
+    #7ea6ff 75%,
+    #ffffff 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: header-shimmer 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(59,91,219,0.3));
+}
+
+@keyframes header-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 서브텍스트 */
+.header p {
+  position: relative;
+  z-index: 1;
+  color: rgba(168, 192, 255, 0.6);
+  letter-spacing: 0.5px;
+}
+
+/* 하단 그라데이션 라인 */
+.header-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b5bdb, #698aff, #3b5bdb, transparent);
+  animation: header-line-glow 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes header-line-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
