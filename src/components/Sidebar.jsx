@@ -4,6 +4,16 @@ const BASE = import.meta.env.BASE_URL
 
 const menuData = [
   {
+    label: '총괄관리자 가이드',
+    href: `${BASE}admin/`,
+    children: [],
+  },
+  {
+    label: '교육담당자 가이드',
+    href: `${BASE}manager/`,
+    children: [],
+  },
+  {
     label: '연동 가이드',
     href: null,
     active: true,
@@ -17,26 +27,11 @@ const menuData = [
       { label: '업종별 조합표', href: '#ref' },
     ],
   },
-  {
-    label: '총괄관리자 가이드',
-    href: `${BASE}admin/`,
-    children: [],
-  },
-  {
-    label: '교육담당자 가이드',
-    href: `${BASE}manager/`,
-    children: [],
-  },
-  {
-    label: '학습자 이용 가이드',
-    href: `${BASE}learner/`,
-    children: [],
-  },
 ]
 
 export default function Sidebar() {
   const [activeHash, setActiveHash] = useState('#overview')
-  const [expanded, setExpanded] = useState({ 0: true })
+  const [expanded, setExpanded] = useState({ 2: true })
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {

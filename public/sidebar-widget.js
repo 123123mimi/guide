@@ -15,10 +15,9 @@
   var BASE = '/guide/';
 
   var guides = [
-    { key: 'main',    label: '연동 가이드',       href: BASE },
     { key: 'admin',   label: '총괄관리자 가이드',  href: BASE + 'admin/' },
     { key: 'manager', label: '교육담당자 가이드',  href: BASE + 'manager/' },
-    { key: 'learner', label: '학습자 이용 가이드', href: BASE + 'learner/' },
+    { key: 'main',    label: '연동 가이드',       href: BASE },
   ];
 
   // --- Build sidebar HTML ---
