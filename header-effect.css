@@ -72,6 +72,7 @@
 .header p {
   position: relative;
   z-index: 1;
+  font-size: 14px;
   color: rgba(168, 192, 255, 0.6);
   letter-spacing: 0.5px;
 }
