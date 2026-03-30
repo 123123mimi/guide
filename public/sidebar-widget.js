@@ -104,6 +104,22 @@
     });
   });
 
+  // --- Toggle expand/collapse for current page sections ---
+  [desktopEl, mobileMenu].forEach(function (container) {
+    container.querySelectorAll('.sidebar-group-btn[data-toggle]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-toggle');
+        var children = container.querySelector('#sidebar-children-' + key);
+        var arrow = btn.querySelector('.sidebar-arrow');
+        if (children) {
+          var isOpen = children.style.display !== 'none';
+          children.style.display = isOpen ? 'none' : '';
+          if (arrow) arrow.classList.toggle('open', !isOpen);
+        }
+      });
+    });
+  });
+
   // --- Scroll spy ---
   if (sections.length > 0) {
     var sectionIds = sections.map(function (s) { return s.href.replace('#', ''); });
