@@ -4,7 +4,9 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #0f1023 0%, #1a1a2e 40%, #16213e 100%);
+  color: #fff;
   padding: 64px 0;
+  text-align: center;
 }
 
 /* 배경 글로우 */
