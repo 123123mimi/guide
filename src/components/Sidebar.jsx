@@ -121,7 +121,7 @@ export default function Sidebar() {
   return (
     <>
       {/* 데스크톱: 플로팅 TOC */}
-      <div className="hidden xl:block fixed top-24 left-6 z-50">
+      <div className="hidden xl:block fixed top-[200px] left-[74px] z-50">
         {menu}
       </div>
 
