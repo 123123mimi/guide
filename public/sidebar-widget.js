@@ -18,6 +18,7 @@
     { key: 'admin',   label: '총괄관리자 가이드',  href: BASE + 'admin/' },
     { key: 'manager', label: '교육담당자 가이드',  href: BASE + 'manager/' },
     { key: 'main',    label: '연동 가이드',       href: BASE },
+    { key: 'faq',     label: 'FAQ',              href: BASE + 'faq/' },
   ];
 
   // --- Build sidebar HTML ---

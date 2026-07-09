@@ -27,6 +27,11 @@ const menuData = [
       { label: '업종별 조합표', href: '#ref' },
     ],
   },
+  {
+    label: 'FAQ',
+    href: `${BASE}faq/`,
+    children: [],
+  },
 ]
 
 export default function Sidebar() {
