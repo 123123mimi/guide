@@ -173,6 +173,8 @@
     <a href="#s4">4. 시스템</a>
     <a href="#s5">5. 홈페이지</a>
     <a href="#s6">6. 교강사 가이드</a>
+    <a href="#ppt1">PPT - 원고 확인</a>
+    <a href="#ppt2">PPT - 제작 가이드</a>
     <a href="#sim1">심사 - 콘텐츠 등록</a>
     <a href="#sim2">심사 - 과정 심사</a>
   </div>
@@ -192,6 +194,8 @@
       <a href="#s4">4. 시스템 관리<span>역할/권한/공통코드/메뉴</span></a>
       <a href="#s5">5. 홈페이지 관리<span>배너 관리</span></a>
       <a href="#s6">6. 교강사 가이드<span>로그인/학습현황/Q&A/토론방</span></a>
+      <a href="#ppt1">PPT 1. 원고 확인<span>분량체크/내용 확인</span></a>
+      <a href="#ppt2">PPT 2. 제작 가이드<span>제작순서/이미지/원본확인</span></a>
       <a href="#sim1">심사 1. 콘텐츠 등록<span>e-심사 등록/사용기관</span></a>
       <a href="#sim2">심사 2. 과정 심사<span>심사방법/등록/결과확인</span></a>
     </div>
@@ -768,6 +772,82 @@
     </div>
   </div>
 
+  <!-- ===== PPT 제작 영역 구분 ===== -->
+  <div style="margin: 60px 0 40px 0; padding: 24px 0; border-top: 3px solid #3b5bdb; border-bottom: 1px solid #e8ecf1;">
+    <h2 style="font-size: 22px; font-weight: 800; color: #3b5bdb; margin: 0; text-align: center;">PPT 제작</h2>
+    <p style="text-align: center; font-size: 13px; color: #888; margin-top: 6px;">원고 확인부터 PPT 제작까지</p>
+  </div>
+
+  <!-- ===== PPT 제작: 원고 확인 ===== -->
+  <div class="phase" id="ppt1">
+    <div class="phase-title">
+      <div class="phase-num">01.</div>
+      <h2>원고 확인</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>강사 원고 확인</h3>
+          <p>강사가 작성한 원고를 확인합니다.<br>
+          <b>분량 체크</b>: 차시별 분량이 적절한지 확인<br>
+          <b>내용 확인</b>: 학습 목표에 맞는 내용인지 검토</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="ppt01.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== PPT 제작: 제작 가이드 ===== -->
+  <div class="phase" id="ppt2">
+    <div class="phase-title">
+      <div class="phase-num">02.</div>
+      <h2>PPT 제작 가이드</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>PPT 제작 순서</h3>
+          <p>원고를 기반으로 아래 순서에 따라 PPT를 제작합니다.<br>
+          <b>1.</b> 썸네일 (진행 표지)<br>
+          <b>2.</b> 학습목차 + 학습내용<br>
+          <b>3.</b> 섹션 구분<br>
+          <b>4.</b> 본문 슬라이드</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="ppt02.png" onclick="openLightbox(this)" /></div>
+      <div class="step-image"><img src="ppt03.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>이미지 활용</h3>
+          <p>PPT 제작 시 이미지는 <b>게티이미지뱅크</b>를 활용합니다.<br>
+          <b>URL</b>: https://www.gettyimagesbank.com/<br>
+          <span style="color:#dc2626">* 26년 10월 16일까지 사용 가능 / 추가 결제는 류대표님과 상의 후 진행</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>기존 과정 PPT 원본 확인</h3>
+          <p>기존에 제작된 과정의 PPT 원본은 외장하드에서 확인할 수 있습니다.<br>
+          <b>경로</b>: E(외장하드) > 999 콘텐츠팀 > 02 콘텐츠 > 과정명<br>
+          <span style="color:#9ca3af">* 02 콘텐츠 폴더에서 강사자료/교안/심사자료 등 모두 확인 가능</span></p>
+        </div>
+      </div>
+      <div class="step-image"><img src="ppt04.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
   <!-- ===== 심사 영역 구분 ===== -->
   <div style="margin: 60px 0 40px 0; padding: 24px 0; border-top: 3px solid #3b5bdb; border-bottom: 1px solid #e8ecf1;">
     <h2 style="font-size: 22px; font-weight: 800; color: #3b5bdb; margin: 0; text-align: center;">심사</h2>
@@ -964,7 +1044,7 @@ window.addEventListener('scroll', () => {
 
 <script
   src="sidebar-internal.js"
-  data-groups='[{"key":"content","label":"콘텐츠 관리","sections":[{"href":"#overview","label":"목차"},{"href":"#s1","label":"1. 관리자 접속"},{"href":"#s2","label":"2. 과정관리"},{"href":"#s3","label":"3. 콘텐츠관리"},{"href":"#s4","label":"4. 시스템"},{"href":"#s5","label":"5. 홈페이지"},{"href":"#s6","label":"6. 교강사 가이드"}]},{"key":"simsa","label":"심사","sections":[{"href":"#sim1","label":"1. 콘텐츠 등록"},{"href":"#sim2","label":"2. 과정 심사"}]}]'>
+  data-groups='[{"key":"content","label":"콘텐츠 관리","sections":[{"href":"#overview","label":"목차"},{"href":"#s1","label":"1. 관리자 접속"},{"href":"#s2","label":"2. 과정관리"},{"href":"#s3","label":"3. 콘텐츠관리"},{"href":"#s4","label":"4. 시스템"},{"href":"#s5","label":"5. 홈페이지"},{"href":"#s6","label":"6. 교강사 가이드"}]},{"key":"ppt","label":"PPT 제작","sections":[{"href":"#ppt1","label":"1. 원고 확인"},{"href":"#ppt2","label":"2. 제작 가이드"}]},{"key":"simsa","label":"심사","sections":[{"href":"#sim1","label":"1. 콘텐츠 등록"},{"href":"#sim2","label":"2. 과정 심사"}]}]'>
 </script>
 
 </body>
