@@ -1,6 +1,6 @@
 /**
  * Sidebar Widget for internal guide page.
- * Two groups: 콘텐츠 관리, 심사 — each expandable/collapsible.
+ * Groups auto-expand/collapse based on scroll position.
  */
 (function () {
   var scriptTag = document.currentScript;
@@ -16,11 +16,12 @@
     html += '<div class="sidebar-widget-title">콘텐츠팀 가이드</div>';
     html += '<nav>';
 
-    groups.forEach(function (g) {
-      html += '<button class="sidebar-group-btn active" data-toggle="' + g.key + '">';
-      html += arrowSvg(true);
+    groups.forEach(function (g, i) {
+      var isFirst = (i === 0);
+      html += '<button class="sidebar-group-btn' + (isFirst ? ' active' : '') + '" data-toggle="' + g.key + '">';
+      html += arrowSvg(isFirst);
       html += g.label + '</button>';
-      html += '<div class="sidebar-children" id="sidebar-children-' + g.key + '">';
+      html += '<div class="sidebar-children" id="sidebar-children-' + g.key + '"' + (isFirst ? '' : ' style="display:none"') + '>';
       g.sections.forEach(function (s) {
         html += '<a href="' + s.href + '">' + s.label + '</a>';
       });
@@ -71,6 +72,7 @@
     });
   });
 
+  // Manual toggle still works
   [desktopEl, mobileMenu].forEach(function (container) {
     container.querySelectorAll('.sidebar-group-btn[data-toggle]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -86,30 +88,58 @@
     });
   });
 
-  // Scroll spy across all groups
+  // Build section-to-group map
+  var sectionToGroup = {};
   var allSectionIds = [];
   groups.forEach(function (g) {
     g.sections.forEach(function (s) {
-      allSectionIds.push(s.href.replace('#', ''));
+      var id = s.href.replace('#', '');
+      sectionToGroup[id] = g.key;
+      allSectionIds.push(id);
     });
   });
 
-  if (allSectionIds.length > 0) {
-    function updateActive() {
-      var current = allSectionIds[0];
-      allSectionIds.forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el && el.offsetTop - 140 <= window.scrollY) current = id;
-      });
+  var lastActiveGroup = groups.length > 0 ? groups[0].key : '';
+
+  function updateActive() {
+    // Find current section
+    var current = allSectionIds[0];
+    allSectionIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.offsetTop - 140 <= window.scrollY) current = id;
+    });
+
+    var activeGroup = sectionToGroup[current] || lastActiveGroup;
+
+    // Only update accordion if group changed
+    if (activeGroup !== lastActiveGroup) {
+      lastActiveGroup = activeGroup;
 
       [desktopEl, mobileMenu].forEach(function (container) {
-        container.querySelectorAll('.sidebar-children a').forEach(function (a) {
-          var href = a.getAttribute('href');
-          a.classList.toggle('active', href === '#' + current);
+        groups.forEach(function (g) {
+          var children = container.querySelector('#sidebar-children-' + g.key);
+          var btn = container.querySelector('[data-toggle="' + g.key + '"]');
+          var arrow = btn ? btn.querySelector('.sidebar-arrow') : null;
+          if (children) {
+            var shouldOpen = (g.key === activeGroup);
+            children.style.display = shouldOpen ? '' : 'none';
+            if (arrow) arrow.classList.toggle('open', shouldOpen);
+            if (btn) btn.classList.toggle('active', shouldOpen);
+          }
         });
       });
     }
 
+    // Update active link highlight
+    [desktopEl, mobileMenu].forEach(function (container) {
+      container.querySelectorAll('.sidebar-children a').forEach(function (a) {
+        var href = a.getAttribute('href');
+        a.classList.toggle('active', href === '#' + current);
+      });
+    });
+  }
+
+  if (allSectionIds.length > 0) {
     window.addEventListener('scroll', updateActive);
     updateActive();
   }
