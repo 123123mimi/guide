@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포켓클래스 콘텐츠팀 가이드</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: #f8f9fc; color: #333; line-height: 1.7;
+  }
+
+  /* ===== 네비게이션 ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid #e8ecf1;
+    padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .nav-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; gap: 0; overflow-x: auto;
+  }
+  .nav a {
+    padding: 14px 16px; font-size: 13px; font-weight: 500;
+    text-decoration: none; color: #666; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s;
+  }
+  .nav a:hover, .nav a.active {
+    color: #3b5bdb; border-bottom-color: #3b5bdb;
+  }
+
+  /* ===== 메인 컨테이너 ===== */
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+
+  /* ===== 개요 섹션 ===== */
+  .overview {
+    background: #fff; border-radius: 0; padding: 28px 24px;
+    margin-bottom: 40px; border-bottom: 1px solid #ddd;
+  }
+  .overview h2 { font-size: 18px; margin-bottom: 14px; color: #222; }
+
+  /* ===== 목차 ===== */
+  .toc {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .toc a {
+    display: block; background: #f1f3f9; padding: 14px 16px;
+    border-radius: 8px; text-decoration: none; color: #333;
+    font-size: 14px; font-weight: 600; transition: all 0.2s;
+  }
+  .toc a:hover { background: #3b5bdb; color: #fff; }
+  .toc a span { display: block; font-size: 12px; font-weight: 400; color: #888; margin-top: 4px; }
+  .toc a:hover span { color: rgba(255,255,255,0.7); }
+
+  /* ===== Phase 섹션 ===== */
+  .phase { margin-bottom: 48px; }
+  .phase-title {
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 20px; padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  .phase-num { color: #3b5bdb; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+  .phase-title h2 { font-size: 20px; font-weight: 700; color: #222; }
+
+  /* ===== 스텝 카드 ===== */
+  .step {
+    background: #fff; border-radius: 4px;
+    margin-bottom: 20px; border: none;
+    overflow: hidden; padding-bottom: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .step-header {
+    padding: 18px 24px 10px 24px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .step-num { color: #3b5bdb; font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 1px; min-width: 18px; }
+  .step-content { flex: 1; }
+  .step-content h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: #222; }
+  .step-content p { font-size: 13.5px; color: #555; }
+
+  /* 콜아웃 */
+  .callout {
+    margin: 0 24px 20px 24px; padding: 13px 16px;
+    font-size: 13px; line-height: 1.8;
+    background: #f9f9fb; border: none; border-radius: 0; color: #444;
+  }
+  .callout b { font-weight: 600; color: #222; }
+  .callout.info { background: #f4f6fa; }
+  .callout.warn { background: #faf6ef; }
+  .callout.danger { background: #faf0f0; }
+  .callout.internal {
+    background: #fef3f2; border-left: 4px solid #f87171;
+    border-radius: 4px;
+  }
+  .callout.internal b { color: #dc2626; }
+
+  /* 서브 타이틀 */
+  .sub-title {
+    display: flex; align-items: baseline; gap: 8px;
+    margin: 32px 0 16px 0; padding-bottom: 8px;
+    border-bottom: 1px solid #e8ecf1;
+  }
+  .sub-title h3 {
+    font-size: 16px; font-weight: 700; color: #3b5bdb; margin: 0;
+  }
+
+  /* 이미지 */
+  .step-image { padding: 0 24px 24px 24px; }
+  .step-image img {
+    width: 100%; border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer; transition: box-shadow 0.2s;
+  }
+  .step-image img:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+  /* 내부용 배지 */
+  .internal-badge {
+    display: inline-block;
+    background: #fef2f2; color: #dc2626;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
+    margin-left: 10px; vertical-align: middle;
+    border: 1px solid #fecaca;
+  }
+
+  /* ===== Lightbox ===== */
+  .lightbox {
+    display: none; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.88); z-index: 1000;
+    justify-content: center; align-items: center; cursor: pointer;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img {
+    max-width: 95%; max-height: 92%;
+    border-radius: 8px; box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-hint {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.5); font-size: 13px;
+  }
+
+  /* ===== 푸터 ===== */
+  .footer {
+    text-align: center; padding: 48px 24px;
+    font-size: 12px; color: #aaa; border-top: 1px solid #e8ecf1;
+  }
+</style>
+<link rel="stylesheet" href="../sidebar-widget.css">
+<link rel="stylesheet" href="../header-effect.css">
+</head>
+<body>
+
+<!-- ===== 헤더 ===== -->
+<div class="header">
+  <h1>콘텐츠팀 가이드</h1>
+  <p>LMS 총괄관리자 업무 매뉴얼</p>
+  <div class="header-line"></div>
+</div>
+
+<!-- ===== 네비게이션 ===== -->
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#overview" class="active">목차</a>
+    <a href="#s1">1. 관리자 접속</a>
+    <a href="#s2">2. 과정관리</a>
+    <a href="#s3">3. 콘텐츠관리</a>
+    <a href="#s4">4. 시스템</a>
+    <a href="#s5">5. 홈페이지</a>
+    <a href="#s6">6. 교강사 가이드</a>
+    <a href="#sim1">심사 - 콘텐츠 등록</a>
+    <a href="#sim2">심사 - 과정 심사</a>
+  </div>
+</div>
+
+<!-- ===== 본문 ===== -->
+<div class="container">
+
+  <!-- 개요 -->
+  <div class="overview" id="overview">
+    <h2>목차</h2>
+    <p>이 문서는 <b>내부 온보딩용</b>입니다. 외부 공유 금지.</p>
+    <div class="toc">
+      <a href="#s1">1. 관리자 접속<span>LMS 로그인</span></a>
+      <a href="#s2">2. 과정 관리<span>카테고리/과정마스터/기수/개강</span></a>
+      <a href="#s3">3. 콘텐츠 관리<span>등록/영상/FTP/문제/시험지/과제</span></a>
+      <a href="#s4">4. 시스템 관리<span>역할/권한/공통코드/메뉴</span></a>
+      <a href="#s5">5. 홈페이지 관리<span>배너 관리</span></a>
+      <a href="#s6">6. 교강사 가이드<span>로그인/학습현황/Q&A/토론방</span></a>
+      <a href="#sim1">심사 1. 콘텐츠 등록<span>e-심사 등록/사용기관</span></a>
+      <a href="#sim2">심사 2. 과정 심사<span>심사방법/등록/결과확인</span></a>
+    </div>
+  </div>
+
+  <!-- ===== 1. 관리자 접속 ===== -->
+  <div class="phase" id="s1">
+    <div class="phase-title">
+      <div class="phase-num">01.</div>
+      <h2>관리자 접속</h2>
+    </div>
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>관리자(LMS) 페이지</h3>
+          <p>관리 역할에 맞춰 로그인하여 시스템 관리<br>
+          <b>URL</b>: http://sub.pocketclass.co.kr/lms/main</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual02.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 2. 과정 관리 ===== -->
+  <div class="phase" id="s2">
+    <div class="phase-title">
+      <div class="phase-num">02.</div>
+      <h2>과정 관리</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>[과정카테고리]</h3>
+          <p>과정 관리에 용이하도록 과정마스터에서 카테고리를 분류<br>
+          분류된 과정은 홈페이지에서 강의탐색으로도 활용</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual04.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>[과정마스터] 개요</h3>
+          <p>콘텐츠 관리에서 만들어진 콘텐츠를 기반으로 학습 설정 및 교육 정보를 등록하는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual05.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>[과정마스터] 등록방법 (1) 기본정보</h3>
+          <p>과정구분/과정명/연결 콘텐츠/학습시간/이미지 등록</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual06.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>[과정마스터] 등록방법 (2) 학습설정/교육정보</h3>
+          <p>학습 설정 세부 입력 및 콘텐츠 연결 교육정보 확인</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual07.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>[과정마스터] 등록방법 (3) 과정설정/반영비</h3>
+          <p>과정 설정, 반영비(100%), 아웃바운드, 자동발송 설정</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual08.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">06.</div>
+        <div class="step-content">
+          <h3>[과정마스터] 등록방법 (4) 평가설정</h3>
+          <p>진행평가/최종평가/과제/제약조건 설정</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual09.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">07.</div>
+        <div class="step-content">
+          <h3>[기수마스터] <span style="color:#dc2626; font-size:13px; font-weight:500;">*행정팀 진행 영역 (진행 사항 참고)</span></h3>
+          <p>동일한 시작일~종료일에 진행하는 과정이 다수일 경우 기간을 만들어서 개강 작업 시 활용</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual10.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">08.</div>
+        <div class="step-content">
+          <h3>[순환마스터] <span style="color:#dc2626; font-size:13px; font-weight:500;">*행정팀 진행 영역 (진행 사항 참고)</span></h3>
+          <p>원하는 날짜에 자동으로 개강이 진행되는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual11.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">09.</div>
+        <div class="step-content">
+          <h3>[과정관리-비환급] 개강 <span style="color:#dc2626; font-size:13px; font-weight:500;">*행정팀 진행 영역 (진행 사항 참고)</span></h3>
+          <p>업체별 비환급 과정 개강을 진행하는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual12.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">10.</div>
+        <div class="step-content">
+          <h3>[과정관리-비환급] 상세설정 <span style="color:#dc2626; font-size:13px; font-weight:500;">*행정팀 진행 영역 (진행 사항 참고)</span></h3>
+          <p>과정상태 승인 및 상세 설정</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual13.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">11.</div>
+        <div class="step-content">
+          <h3>[과정관리-환급] <span style="color:#dc2626; font-size:13px; font-weight:500;">*행정팀 진행 영역 (진행 사항 참고)</span></h3>
+          <p>환급 과정 개강 및 상세 설정</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual14.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 3. 콘텐츠 관리 ===== -->
+  <div class="phase" id="s3">
+    <div class="phase-title">
+      <div class="phase-num">03.</div>
+      <h2>콘텐츠 관리</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>[콘텐츠 교·강사 관리]</h3>
+          <p>콘텐츠별 교·강사 등록 메뉴. *표시 된 부분 필수 기재 후 등록</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual16.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>[콘텐츠관리] 콘텐츠 등록 (2단계 진행 필요)</h3>
+          <p>콘텐츠의 기본 정보와 학습 구조를 설정하는 메뉴<br>
+          코드 = 영상을 관리하는 번호 (영문/숫자만 가능, FTP 서버 파일명과 동일 추천)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual17.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>[콘텐츠관리] 1단계 - 신규등록</h3>
+          <p>콘텐츠명/콘텐츠 코드/구분(MP4)/사전진단 입력. *표 있는 구간 모두 입력 필수</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual18.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>[콘텐츠관리] 2단계 - 콘텐츠 수정/등록</h3>
+          <p>저장 후 목록에서 다시 선택하여 상세 화면으로 이동<br>
+          상단 탭: 차시/학습내용/파일등록/문제등록/시험지등록/과제등록/사전진단</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual19.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>콘텐츠 차시(영상) 등록</h3>
+          <p>[+페이지 추가]로 목록 만들기 → 차시명 입력 → 페이지 내 URL 입력</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual20.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">06.</div>
+        <div class="step-content">
+          <h3>영상 등록 예시 (통영상)</h3>
+          <p>1개의 통영상을 차시에 등록하는 과정 예시</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual21.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">07.</div>
+        <div class="step-content">
+          <h3>영상 등록 예시 (분할 영상)</h3>
+          <p>인트로-학습목표-학습내용-아웃트로 등 분할 영상 등록 예시</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual22.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">08.</div>
+        <div class="step-content">
+          <h3>FTP(FileZilla) 접속 방법</h3>
+          <p>학습 영상은 FTP 서버에 업로드 후 URL을 LMS에 등록하여 영상 시청<br>
+          파일질라 > 사이트관리자 > 로그인 정보 입력</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual23.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">09.</div>
+        <div class="step-content">
+          <h3>FTP 로그인 화면</h3>
+          <p>FTP 파일(폴더별) 정보 메뉴 및 파일 관리 메뉴 안내</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual24.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">10.</div>
+        <div class="step-content">
+          <h3>FTP 영상 업로드</h3>
+          <p>디렉터리 만들기 → 내 컴퓨터 영상을 드래그하여 업로드<br>
+          파일명은 영문/숫자만 사용 (한글 X)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual25.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">11.</div>
+        <div class="step-content">
+          <h3>영상 주소(URL) 조합 방법</h3>
+          <p>CDN 주소 + FTP 경로 조합으로 최종 URL 생성</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual26.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">12.</div>
+        <div class="step-content">
+          <h3>콘텐츠 문제 등록 (엑셀 일괄)</h3>
+          <p>엑셀 샘플 다운로드 → 양식에 맞춰 입력 → 업로드 시 일괄 등록</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual27.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">13.</div>
+        <div class="step-content">
+          <h3>[학습내용] 탭</h3>
+          <p>등록된 차시에 대해 학습 내용 입력. 기존차시등록으로 다른 과정에서 불러오기 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual28.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">14.</div>
+        <div class="step-content">
+          <h3>[파일등록] 탭</h3>
+          <p>강의계획서/교안/용어설명집/기타 등 학습자에게 제공되는 파일 업로드</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual29.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">15.</div>
+        <div class="step-content">
+          <h3>[문제등록] 개별 등록</h3>
+          <p>진행평가/최종평가 선택 → 문제 유형(객관식 추천) → 난이도/문제/해설/보기 입력</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual30.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">16.</div>
+        <div class="step-content">
+          <h3>[문제등록] 엑셀 일괄 업로드</h3>
+          <p>차시(숫자)/유형(A객관식,B주관식)/분류(M진행,L최종,A전체)/난이도(H상,M중,L하)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual31.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">17.</div>
+        <div class="step-content">
+          <h3>[시험지등록] (1) 기본설정/출제방식</h3>
+          <p>시험지 유형(진행/최종) → 출제방식: 고정/차시별/랜덤</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual32.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">18.</div>
+        <div class="step-content">
+          <h3>[시험지등록] (2) 배점 설정</h3>
+          <p>총점 100점 기준 배점 지정. 배점 추천 기능 활용 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual33.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">19.</div>
+        <div class="step-content">
+          <h3>[과제등록]</h3>
+          <p>과정에 과제가 출제될 경우 입력. 과정마스터 > 과제 > 사용 체크 필요</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual34.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">20.</div>
+        <div class="step-content">
+          <h3>[사전진단]</h3>
+          <p>환급과정의 경우 과정 시작 전 사전진단 첨부 (10문항 O/X 출제)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual35.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 심사: 콘텐츠 등록 ===== -->
+  <div class="phase" id="sim1">
+    <div class="phase-title">
+      <div class="phase-num">01.</div>
+      <h2>콘텐츠 등록</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>e-심사 개요</h3>
+          <p>콘텐츠(영상)은 e-simsa에서 콘텐츠 등록 후 과정 심사를 거쳐 환급 과정으로 사용<br>
+          <b>로그인 계정</b>: pocketclass_cp<br>
+          등록 후 2주~한달 내 "적합/비적합" 확인</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa01.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>기존 등록 콘텐츠 확인</h3>
+          <p>기존 등록된 콘텐츠명을 클릭하여 진행했던 신청 내용 확인 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa02.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>콘텐츠 등록 신청 준비 자료</h3>
+          <p>1. 콘텐츠(영상 - LMS 등록 및 개강까지)<br>
+          2. 과정 개요서<br>
+          3. 학습 시간<br>
+          평가방법 및 콘텐츠 학습정보란에 엑셀(과정개요/시간값) 입력</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa03.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>콘텐츠 등록 정보 확인</h3>
+          <p>콘텐츠 등록 후 콘텐츠명 눌러 등록된 정보 확인 가능 / 엑셀 다운로드 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa04.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>사용기관 등록</h3>
+          <p>환급 과정 이용/과정 임대 등 콘텐츠 사용 시 사용기관에 등록 필요<br>
+          환급 과정 이용 시 행정팀을 통해 HRD 등록도 함께 진행</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa05.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+  </div>
+
+  <!-- ===== 심사: 과정 심사 ===== -->
+  <div class="phase" id="sim2">
+    <div class="phase-title">
+      <div class="phase-num">02.</div>
+      <h2>과정 심사</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">06.</div>
+        <div class="step-content">
+          <h3>과정 심사 개요</h3>
+          <p>콘텐츠 등록 후 "적합" 판정 뒤 과정 심사 진행 가능<br>
+          <b>계정</b>: Pocketclass<br>
+          과정 심사는 심사 일정이 별도로 있어 일정 확인 후 진행<br>
+          사용할 콘텐츠는 과정 심사 한달 전에는 콘텐츠 등록을 꼭 먼저 진행</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa06.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">07.</div>
+        <div class="step-content">
+          <h3>과정심사 방법</h3>
+          <p>1. Pocketclass > 로그인 시도 > 이메일 인증 후 로그인<br>
+          2. 과정심사 > 등록하기</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa07.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">08.</div>
+        <div class="step-content">
+          <h3>과정심사 등록 상세</h3>
+          <p>배점에 따라 등급 부여 (80점 이상 A등급)</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa08.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">09.</div>
+        <div class="step-content">
+          <h3>등록된 내용 확인 (1)</h3>
+          <p>콘텐츠명 선택 > 상단 탭 눌러서 확인. 입력된 정보에 대해 보기만 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa09.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">10.</div>
+        <div class="step-content">
+          <h3>등록된 내용 확인 (2) - 심사결과</h3>
+          <p>과정심사 > 심사결과 탭에서 콘텐츠 선택</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa10.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">11.</div>
+        <div class="step-content">
+          <h3>등록된 내용 확인 (2) - 개요서 확인</h3>
+          <p>과정개요서 > 메인에서 봤던 내용과 동일<br>
+          콘텐츠개요서 > 등록한 파일 다운로드 가능</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="esimsa11.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 4. 시스템 관리 ===== -->
+  <div class="phase" id="s4">
+    <div class="phase-title">
+      <div class="phase-num">04.</div>
+      <h2>시스템 관리</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>[관리자-역할 할당]</h3>
+          <p>교육담당자/영업담당자/총괄관리자 등 담당자별 보이는 메뉴 설정</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual62.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>[역할 목록]</h3>
+          <p>각 담당자에 맞는 역할을 볼 수 있는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual63.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>[공통코드 관리]</h3>
+          <p>LMS 전반에서 사용하는 공통 분류 기준 코드를 관리하는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual64.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>[메뉴 관리]</h3>
+          <p>관리자 페이지에 노출되는 메뉴 구조를 관리하는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual65.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 5. 홈페이지 관리 ===== -->
+  <div class="phase" id="s5">
+    <div class="phase-title">
+      <div class="phase-num">05.</div>
+      <h2>홈페이지 관리</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>[배너 관리]</h3>
+          <p>홈페이지 메인에 노출되는 배너를 관리하는 메뉴</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual67.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>[배너 관리] 신규등록</h3>
+          <p>신규 배너 등록 상세</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="manual68.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+  <!-- ===== 6. 교강사 가이드 ===== -->
+  <div class="phase" id="s6">
+    <div class="phase-title">
+      <div class="phase-num">06.</div>
+      <h2>교강사 가이드</h2>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">01.</div>
+        <div class="step-content">
+          <h3>교강사 페이지 이동</h3>
+          <p><b>URL</b>: pocketclass.co.kr/tutorMng<br>
+          교강사 전용 로그인 페이지에서 아이디/비밀번호로 로그인합니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="tutor01.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">02.</div>
+        <div class="step-content">
+          <h3>학습현황관리 [학습자관리]</h3>
+          <p>수강중인 학습자에 대한 정보를 확인 가능합니다.<br>
+          소속회사/과정/기간/평가 진행/수료 여부 등 과정에 대한 전반적인 확인</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="tutor02.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">03.</div>
+        <div class="step-content">
+          <h3>학습현황관리 [과정결과관리]</h3>
+          <p><b>평가결과관리</b><br>
+          > 중간평가/최종평가 제출 여부 및 점수 확인<br><br>
+          <b>과제결과관리</b><br>
+          > 학습자가 과제 제출 시 '채점' 진행 필요<br>
+          1. 과제 제출한 학습자 선택<br>
+          2. 과제 문항 확인<br>
+          3. 예시 답안과 비교하여 정답 점수를 진행<br>
+          <span style="color:#9ca3af">(3 예시답안을 통해 바로 확인 또는 3-1 첨부된 첨삭지도서를 통해 파일로 정답 확인 가능)</span><br>
+          <span style="color:#9ca3af">**문항 및 정답은 강사님께서 공유하신 개요서를 기반으로 작성됩니다</span><br>
+          4. 점수 및 피드백 입력<br>
+          5. [첨삭 일정(학습자 수강 일정)] 안에 채점이 완료 되도록 관리</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="tutor03.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">04.</div>
+        <div class="step-content">
+          <h3>게시판관리 [Q&A 관리]</h3>
+          <p>학습자가 학습 중 작성한 질문이 노출됩니다.<br>
+          학습자에게 답변을 남겨주세요.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="tutor04.png" onclick="openLightbox(this)" /></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">05.</div>
+        <div class="step-content">
+          <h3>운영/모니터링 [토론방 관리]</h3>
+          <p>학습자간 대화(토론)이 필요할 경우 생성합니다.<br>
+          <b>[+주제등록]</b> 작성된 내용은 학습자 페이지에 노출되며, 학습자간 대화를 실시간으로 확인 가능합니다.<br>
+          학습자간 대화 중 강사의 의견도 남길 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step-image"><img src="tutor05.png" onclick="openLightbox(this)" /></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 푸터 ===== -->
+<div class="footer">
+  내부 온보딩 가이드 — LMS 총괄관리자 매뉴얼 | 외부 공유 금지
+</div>
+
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" />
+  <div class="lightbox-hint">클릭하여 닫기 | ESC</div>
+</div>
+
+<script>
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// 네비게이션 활성화
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  document.querySelectorAll('.phase, .overview').forEach(section => {
+    const top = section.offsetTop - 120;
+    if (pageYOffset >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+
+<script
+  src="sidebar-internal.js"
+  data-groups='[{"key":"content","label":"콘텐츠 관리","sections":[{"href":"#overview","label":"목차"},{"href":"#s1","label":"1. 관리자 접속"},{"href":"#s2","label":"2. 과정관리"},{"href":"#s3","label":"3. 콘텐츠관리"},{"href":"#s4","label":"4. 시스템"},{"href":"#s5","label":"5. 홈페이지"},{"href":"#s6","label":"6. 교강사 가이드"}]},{"key":"simsa","label":"심사","sections":[{"href":"#sim1","label":"1. 콘텐츠 등록"},{"href":"#sim2","label":"2. 과정 심사"}]}]'>
+</script>
+
+</body>
+</html>
