@@ -157,84 +157,18 @@
 <body>
 
 <!-- ===== 헤더 ===== -->
-<div class="header header-custom">
+<div class="header">
   <canvas id="header-canvas"></canvas>
-  <div class="header-glass">
-    <div class="header-tag">POCKETCLASS</div>
-    <h1>콘텐츠팀 가이드</h1>
-    <p>Content Team Onboarding Guide</p>
-  </div>
+  <h1>콘텐츠팀 가이드</h1>
+  <p>포켓클래스 LMS 콘텐츠팀 매뉴얼</p>
   <div class="header-line"></div>
 </div>
 
 <style>
-.header-custom {
-  height: 260px !important;
-  background: linear-gradient(135deg, #0a0a1a 0%, #0d1333 30%, #121a4e 60%, #0a0f2e 100%) !important;
-}
-.header-custom::before {
-  background: radial-gradient(ellipse at 30% 50%, rgba(99,102,241,0.15) 0%, transparent 60%) !important;
-  width: 800px !important; height: 400px !important;
-  animation: none !important; opacity: 1 !important;
-}
-.header-custom::after {
-  background: radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.1) 0%, transparent 60%) !important;
-  width: 600px !important; height: 350px !important;
-  animation: none !important; opacity: 1 !important;
-}
-
 #header-canvas {
   position: absolute; top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 0; pointer-events: none;
-}
-
-.header-glass {
-  position: relative; z-index: 2;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 20px;
-  padding: 28px 48px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.header-tag {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 3px;
-  color: rgba(139,92,246,0.7);
-  margin-bottom: 10px;
-}
-
-.header-custom h1 {
-  font-size: 32px !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #e0e7ff 0%, #ffffff 40%, #c7d2fe 70%, #ffffff 100%) !important;
-  background-size: 300% 100% !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  animation: header-text-flow 8s ease-in-out infinite !important;
-  filter: drop-shadow(0 0 30px rgba(99,102,241,0.3)) !important;
-  margin-bottom: 8px !important;
-}
-
-@keyframes header-text-flow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.header-custom p {
-  font-size: 12px !important;
-  color: rgba(165,180,252,0.4) !important;
-  letter-spacing: 2px !important;
-  font-weight: 400 !important;
-  text-transform: uppercase;
-}
-
-.header-custom .header-line {
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.6), rgba(139,92,246,0.4), rgba(99,102,241,0.6), transparent) !important;
 }
 </style>
 
@@ -254,15 +188,15 @@
 
   function createParticles() {
     particles = [];
-    var count = Math.floor(w * h / 6000);
+    var count = Math.floor(w * h / 8000);
     for (var i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: Math.random() * 1.2 + 0.3,
-        dx: (Math.random() - 0.5) * 0.3,
-        dy: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.4 + 0.1
+        r: Math.random() * 1 + 0.3,
+        dx: (Math.random() - 0.5) * 0.25,
+        dy: (Math.random() - 0.5) * 0.15,
+        opacity: Math.random() * 0.35 + 0.1
       });
     }
   }
@@ -278,26 +212,9 @@
       if (p.y > h) p.y = 0;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(165,180,252,' + p.opacity + ')';
+      ctx.fillStyle = 'rgba(168,192,255,' + p.opacity + ')';
       ctx.fill();
     });
-
-    // Draw subtle connections
-    for (var i = 0; i < particles.length; i++) {
-      for (var j = i + 1; j < particles.length; j++) {
-        var dx = particles[i].x - particles[j].x;
-        var dy = particles[i].y - particles[j].y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 80) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = 'rgba(99,102,241,' + (0.06 * (1 - dist / 80)) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
     requestAnimationFrame(draw);
   }
 
